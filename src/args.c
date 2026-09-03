@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void read_flags(int argc, char** argv, char** source_file,char** output_file,int* colors_flag,int* order_flag){
+void read_flags(int argc, char** argv, char** source_file,char** output_file,int* colors_flag,int* order_flag,int* shuffle_flag,int* timestamp_flag,int* selection_flag){
 
     if(argc == 1){
         print_error_no_source(argv[0]);
@@ -14,11 +14,16 @@ void read_flags(int argc, char** argv, char** source_file,char** output_file,int
         switch(argv[i][0]){
             case '-':
                 switch(argv[i][1]){
-                    case 'g': 
+                    case 'a': *selection_flag = 2; break;
+                    case 'i': break;
+                    case 'k': *selection_flag = 1; break;
+                    case 'o': 
                         if(i+1>=argc) {fprintf(stderr,"Flag %s require argument.\n",argv[i]); exit(1);}
                         *output_file = argv[++i]; 
                         break;  
                     case 'r': *order_flag = !*order_flag; break;
+                    case 'n': *timestamp_flag = 0; break;
+                    case 's': *shuffle_flag = 0; break;
                     case 'c': *colors_flag  = 0; break;
                     case '-':   
                         if(!strcmp(argv[i],"--help")){}
@@ -60,7 +65,7 @@ void print_help_message(const char *program_name) {
         "A simple flashcard console application with status tracking.\n\n"
         "File format:\n"
         "  CSV format with 3 columns (3rd column is optional status: 0=unlearned, 1=learned):\n"
-        "  \"front side\",\"back side\",[status]\n\n"
+        "  \"front side\",\"back side\",\"[status]\"\n\n"
         "Selection modes (choose one, default: -i):\n"
         "  -a              Practice all flashcards\n"
         "  -i              Practice only unlearned/new flashcards (status 0)\n"

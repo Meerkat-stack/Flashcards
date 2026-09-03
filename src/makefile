@@ -21,4 +21,4 @@ clean:
 	rm -f ../obj/*.o
 
 debug: main.c args.c words.c quiz.c
-	$(CC) -g main.c args.c words.c quiz.c -o ../bin/flashcards_debug
+	$(CC) -g main.c args.c words.c quiz.c -DEBUG -o ../bin/flashcards_debug

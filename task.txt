@@ -1,9 +1,9 @@
 [OK]	1. Struktura projektu: includes, src, data, makefile...
-	1.1 Trzeba naprawić odczytywanie argumentów
-2. Wczytanie liczby powtórzeń, bądź nie jeśli nie ma
-3. Funkcja dzieląca tablice na partycje, na początek te z 0, na końiec wszystkie inne
-5. Zmiana "help message" i flag, -a = powtórz wszystkie, -c = powtórz te znane, -i = powtórz te nowe tylko, -c = powtórz bez tasowania, -o = output file name (ostrzeżenie że ten plik zostanie nadpisany), -n = nie wyświetlaj czasu (tylko na końcu)
-4. Funkcja tasująca w zależności od flagi, -c nie tasuje, -c tasuje tylko znane, -a tasuje wszystko itd.
+1.1 Trzeba naprawić odczytywanie argumentów
+[OK]	2. Wczytanie liczby powtórzeń, bądź nie jeśli nie ma
+[OK]	3. Funkcja dzieląca tablice na partycje, na początek te z 0, na końiec wszystkie inne
+[OK]	5. Zmiana "help message" i flag, -a = powtórz wszystkie, -c = powtórz te znane, -i = powtórz te nowe tylko, -c = powtórz bez tasowania, -o = output file name (ostrzeżenie że ten plik zostanie nadpisany), -n = nie wyświetlaj czasu (tylko na końcu)
+[OK]	4. Funkcja tasująca w zależności od flagi, -c nie tasuje, -c tasuje tylko znane, -a tasuje wszystko itd.
 5. Wyświetlanie słówek i pobieranie odpoweidzi, proste porównywanie, (źle/dobrze = komunikat OK/NOPE) // poróœnywanie tymczasowe
 6. Wyświetlanie logów ze statystykami, czas spędzony na nauce, liczba poprawnych, liczba niepoprawnych, procent przyswojonych, jak flaga opdowiednia to nic nie wyświetlać
 7. Zapisywanie, niech dopisują sie odrazu do pliku jakby program się niespowdziewanie zamkną
@@ -16,4 +16,6 @@
 ~~12. Może też dodać funkcje wymowy, po wpisaniu komendy np. /pronounce czy /voice, wtedy mogło by ueuchomić espeak jeśli by istaniło, w przeciwnym wypadku podawało by komunikat żeby zainstalować espeak czy jakoś tak, no to by wymagało też zdefiniowanie języka, więc to tak na dwa razy
 
 
-!!! Funkcja wczytująca .CSV jest do poprawy, jest brzydka i nieczytelna
+!!! load_words() jest napisana paskudnie - do naprawy
+!!! Funkcja wczytująca .CSV jest do poprawy, jest brzydka i nieczytelna (load_words())
+??? Czy ma sens że rozróżnia się jedynie słowa ze statusem 0 i innym? Czy jest ok że nie liczy sie czy słowo było powtó©zone 1,2 czy 20 razy? Jak to ulepszyć?
