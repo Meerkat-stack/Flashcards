@@ -148,7 +148,7 @@ char* init_output_file(char* output_file){
         struct tm* date = localtime(&current_time);
         char* default_filename = malloc(sizeof(char)*27);
         if(!default_filename){
-            fprintf(stderr,"MEmory alocation fault while creating output file.\n");
+            fprintf(stderr,"Memory alocation fault while creating output file.\n");
             exit(1);
         }
         char date_buff[17];

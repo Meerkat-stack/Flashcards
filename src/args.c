@@ -63,6 +63,7 @@ void print_help_message(const char *program_name) {
     printf(
         "Usage: %s <source_file.csv> [OPTIONS]\n\n"
         "A simple flashcard console application with status tracking.\n\n"
+        "Type '/quit' at any time during practice to exit the session.\n\n"
         "File format:\n"
         "  CSV format with 3 columns (3rd column is optional status: 0=unlearned, 1=learned):\n"
         "  \"front side\",\"back side\",\"[status]\"\n\n"

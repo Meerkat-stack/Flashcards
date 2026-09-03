@@ -30,27 +30,34 @@ int main(int argc, char** argv){
 
     int unknown_words_count = partition(words_array,words_count);
 
-    switch (selection_flag)
-    {
-    case 0:
-        shuffle(words_array,0,unknown_words_count-1);
-        break;
-    case 1:
-        shuffle(words_array,unknown_words_count,words_count-1);
-        break;
-    case 2:
-        shuffle(words_array,0,words_count-1);
-        break;
+    if(shuffle_flag){
+        switch (selection_flag)
+        {
+        case 0:
+            shuffle(words_array,0,unknown_words_count-1);
+            break;
+        case 1:
+            shuffle(words_array,unknown_words_count,words_count-1);
+            break;
+        case 2:
+            shuffle(words_array,0,words_count-1);
+            break;
+        }
     }
+
+    /*---------------------------Game---------------------------*/
+    int saved_words_count = game_loop(output_file,words_array,unknown_words_count,words_count,colors_flag,order_flag,timestamp_flag,selection_flag);
+
+
 
     /*---------------------------DEBUG---------------------------*/
 
-    for(int i=0;i<words_count;i++){
-        if(words_array[i].first_side && words_array[i].second_side) 
-            printf("%s ? %s | %d\n",words_array[i].first_side,words_array[i].second_side,words_array[i].status);
-        // else
-        //     printf("NULL\n");
-    }
+    // for(int i=0;i<words_count;i++){
+    //     if(words_array[i].first_side && words_array[i].second_side) 
+    //         printf("%s ? %s | %d\n",words_array[i].first_side,words_array[i].second_side,words_array[i].status);
+    //     // else
+    //     //     printf("NULL\n");
+    // }
 
     // Save results
 
