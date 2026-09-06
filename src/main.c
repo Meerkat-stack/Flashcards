@@ -47,20 +47,8 @@ int main(int argc, char** argv){
 
     /*---------------------------Game---------------------------*/
     int saved_words_count = game_loop(output_file,words_array,unknown_words_count,words_count,colors_flag,order_flag,timestamp_flag,selection_flag);
-
-
-
-    /*---------------------------DEBUG---------------------------*/
-
-    // for(int i=0;i<words_count;i++){
-    //     if(words_array[i].first_side && words_array[i].second_side) 
-    //         printf("%s ? %s | %d\n",words_array[i].first_side,words_array[i].second_side,words_array[i].status);
-    //     // else
-    //     //     printf("NULL\n");
-    // }
-
-    // Save results
-
+    
+    save_words(output_file,selection_flag,saved_words_count,words_count,words_array,unknown_words_count);
 
     free_words(&words_array,words_count); 
     free(output_file);   
