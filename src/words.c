@@ -85,42 +85,55 @@ void load_words(char* source_file,word_t** words_array,int* words_count){
         (*words_array)[i].status = 0;
     }
 
-    char* w1b=NULL,*w1e=NULL,*w2b=NULL,*w2e=NULL,*w3b=NULL,*w3e=NULL; // e.g. w1b - word first begin, w1e - word first end
-
     int wrong_line_count = 0;
+
+    char* first_side=NULL,*second_side=NULL,*status_str=NULL;
+    size_t string_lenght = 0;
 
     {
     int i=0;
     while(fgets(buffer,sizeof(buffer),source_fp)){
 
-        w1b = NULL; w1e = NULL; w2b = NULL; w2e = NULL; w3b  = NULL; w3e = NULL;
+        string_lenght = strlen(buffer);
+        if(string_lenght > 0) buffer[string_lenght-1] = '\0';
+        else continue;
 
-        w1b = strchr(buffer,'"');  // Returns pointer to the first \"
-        if(w1b) w1e = strchr(w1b+1,'"');
-        if(w1e) w2b = strchr(w1e+1,'"');
-        if(w2b) w2e = strchr(w2b+1,'"');
-        if(w2e) w3b = strchr(w2e+1,'"');
-        if(w3b) w3e = strchr(w3b+1,'"');
+        if(buffer[0] == '"'){
+            first_side = strtok(buffer,",");
+            second_side = strtok(NULL,",");
+            status_str = strtok(NULL,",");
+        }
+        else{
+            first_side = strtok(buffer,"=");
+            second_side = strtok(NULL,"=");
+        }
 
-        if(!w1b || !w1e || !w2b || !w2e){
+        if(!first_side || !second_side){
             fprintf(stderr,"Line %d in %s file is incorrect.\n",i+1+wrong_line_count,source_file);
             wrong_line_count++;
-            // i++;
             continue;
         }
 
-        *w1e = '\0'; *w2e = '\0';
+        if(first_side[0] == '"') first_side++;
+        if(second_side[0] == '"') second_side++;
 
-        (*words_array)[i].first_side = strdup(w1b+1);
-        (*words_array)[i].second_side = strdup(w2b+1);
+        string_lenght = strlen(first_side);
+        if(string_lenght > 0 && first_side[string_lenght-1] == '"') first_side[string_lenght-1] = '\0';
+        string_lenght = strlen(second_side);
+        if(string_lenght > 0 && second_side[string_lenght-1] == '"') second_side[string_lenght-1] = '\0';
 
-        if(w3b && w3e){
-            *w3e = '\0';
-            (*words_array)[i].status = atoi(w3b+1);
+        (*words_array)[i].first_side = strdup(first_side);
+        (*words_array)[i].second_side = strdup(second_side);
+        
+        if(status_str){
+            if(status_str[0] == '"') (*words_array)[i].status = atoi(status_str+1);
+            else (*words_array)[i].status = atoi(status_str);
         }
 
-        if((*words_array)[i].first_side && (*words_array)[i].second_side) {i++; wrong_line_count++;}
-        else fprintf(stderr,"There is problem with %d line.\n",i + 1 + wrong_line_count);
+        first_side = NULL; second_side = NULL; status_str = NULL;
+
+        if((*words_array)[i].first_side && (*words_array)[i].second_side) i++; 
+        else {fprintf(stderr,"There is problem with %d line.\n",i + 1 + wrong_line_count); wrong_line_count++;}
     }
     *words_count = i;
     }
@@ -132,7 +145,7 @@ void load_words(char* source_file,word_t** words_array,int* words_count){
 
     word_t* tmp_array = realloc(*words_array,sizeof(word_t)*(*words_count));
     if(!tmp_array){
-        fprintf(stderr,"Memory fault with realloc while reading words from file.\n");
+        fprintf(stderr,"Memory fault with realloc function while reading words from file.\n");
         exit(1);
     }
     *words_array = tmp_array;
@@ -152,7 +165,7 @@ char* init_output_file(char* output_file){
             exit(1);
         }
         char date_buff[17];
-        strftime(date_buff,sizeof(date_buff),"%Y-%m-%dT%H-%M",date);
+        strftime(date_buff,sizeof(date_buff),"%Y-%mT%H-%M",date);
         snprintf(default_filename,sizeof(char)*27,"words_%s.csv",date_buff);
         output_file = default_filename;
     }

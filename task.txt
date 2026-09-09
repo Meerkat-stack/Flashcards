@@ -1,5 +1,5 @@
 [OK]	1. Struktura projektu: includes, src, data, makefile...
-1.1 Trzeba naprawić odczytywanie argumentów
+[OK]	1.1 Trzeba naprawić odczytywanie argumentów
 [OK]	2. Wczytanie liczby powtórzeń, bądź nie jeśli nie ma
 [OK]	3. Funkcja dzieląca tablice na partycje, na początek te z 0, na końiec wszystkie inne
 [OK]	5. Zmiana "help message" i flag, -a = powtórz wszystkie, -c = powtórz te znane, -i = powtórz te nowe tylko, -c = powtórz bez tasowania, -o = output file name (ostrzeżenie że ten plik zostanie nadpisany), -n = nie wyświetlaj czasu (tylko na końcu)
@@ -9,14 +9,19 @@
 [OK]	7. Zapisywanie, niech dopisują sie odrazu do pliku jakby program się niespowdziewanie zamkną
 [OK]	8. Trzeba dodać stop, komenda po wpisaniu której program się normalnie zakończy, np. /quit lub /! czy coś, takie nie oczywiste, żeby nie było takiego słówka
 
-~9. Niech możliwe będzie wczytanie słówek z pliku gdzie struktura wygląda prościej (np. car=auto), tak łatwiej wpisywać z tym echo itd a sam sobie potem zmodyfikuje z .txt na .CSV
+[OK]	~9. Niech możliwe będzie wczytanie słówek z pliku gdzie struktura wygląda prościej (np. car=auto), tak łatwiej wpisywać z tym echo itd a sam sobie potem zmodyfikuje z .txt na .CSV
 [OK]	~10. Niech przy sprawdzaniu wyświetla rózniece w odpowiedzi i w kluczu, brakujące bądź błędne litery niech koloruje na czerwono a dobre odpowiedzi (całe sówwo) na zielono
 
 ~~11. Można by wprowadzić też mozliwość po prostu sprawdzania, bez wpisywania, wyświetla sie jedna strona klika się klawisz pokazuje się odpowiedź itd.
-~~12. Może też dodać funkcje wymowy, po wpisaniu komendy np. /pronounce czy /voice, wtedy mogło by ueuchomić espeak jeśli by istaniło, w przeciwnym wypadku podawało by komunikat żeby zainstalować espeak czy jakoś tak, no to by wymagało też zdefiniowanie języka, więc to tak na dwa razy
+
+[OK]	!!! load_words() jest napisana paskudnie - do naprawy
 
 
-!!! load_words() jest napisana paskudnie - do naprawy
-!!! Funkcja wczytująca .CSV jest do poprawy, jest brzydka i nieczytelna (load_words())
-??? Czy ma sens że rozróżnia się jedynie słowa ze statusem 0 i innym? Czy jest ok że nie liczy sie czy słowo było powtó©zone 1,2 czy 20 razy? Jak to ulepszyć?
-    Ciekawy feater może być że nawet jak się poda złe słowo to i tak trzeba wpisac poprawnie ale to sie juz nie będzię liczyć
+Ciekawy feater może być że nawet jak się poda złe słowo to i tak trzeba wpisac poprawnie ale to sie juz nie będzię liczyć
+
+NAZWA=mnemo od greckiego mnēmē czyli pamięć plus tam nemo jest, jak ta rybka
+
+[]niech na końcu jak nie wyświetla logóów po dordze to niech na końcu da statystyki końcowe
+[]pasuje dać opis tych statysstyk żeby były czytelniejsze
+[]niech w man będzie informacja o tym że format .txt z formą "strona=druga strona" też jest dopuszczalny, on se go odczta i zapisze tak jak powinien
+[]koniecznie dodać tryb opisowy, gdzie nie trzeba podawać opdowiedzi, po prostu wyświeta się pytanie, mówisz se odpoweidź i potem po enterze daje się opowiedź i sam decydujesz czy ok czy nie np klawiszami q/p ważne tu też aby się dalo cofać no i tutaj tylko format .CSV byłby dopuszczalny

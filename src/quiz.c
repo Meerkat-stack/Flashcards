@@ -175,6 +175,6 @@ int game_loop(
         log_counter++;
 
     }
-    
+    fclose(output_fp);
     return log_counter;
 }
