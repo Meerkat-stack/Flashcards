@@ -160,6 +160,7 @@ int game_loop(
         }
 
         if(!strcmp(buffer,"/quit")){
+            print_summit(log_counter,correct_counter,hours,minutes,seconds,timestamp_flag,time_start);
             fclose(output_fp);
             return log_counter;
         }
@@ -175,6 +176,22 @@ int game_loop(
         log_counter++;
 
     }
+
+    print_summit(log_counter,correct_counter,hours,minutes,seconds,timestamp_flag,time_start);
+
     fclose(output_fp);
     return log_counter;
 }
+
+void print_summit(int log_counter,int correct_counter,int hours,int minutes,int seconds,int timestamp_flag,time_t time_start){
+    if(!timestamp_flag){
+        time_t time_current = time(NULL);
+        time_t delta_time = time_current - time_start;
+        hours = delta_time/3600;
+        minutes = (delta_time % 3600) / 60;
+        seconds = delta_time % 60;
+        if(hours == 0) printf("Score: %d/%d (%d%%) | Time: %02d:%02d\n",correct_counter, log_counter, correct_counter*100/log_counter, minutes, seconds);
+        else printf("Score: %d/%d (%d%%) | Time: %02d:%02d:%02d\n",correct_counter, log_counter, correct_counter*100/log_counter, hours, minutes, seconds);
+    }
+}
+

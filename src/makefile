@@ -3,7 +3,7 @@ CC = gcc
 LD = gcc
 
 ../bin/main: 	../obj/main.o ../obj/args.o ../obj/words.o ../obj/quiz.o
-	$(LD) ../obj/main.o ../obj/words.o ../obj/args.o ../obj/quiz.o -o ../bin/flashcards
+	$(LD) ../obj/main.o ../obj/words.o ../obj/args.o ../obj/quiz.o -o ../bin/mnemo
 
 ../obj/main.o:	main.c
 	$(CC) -c main.c -o ../obj/main.o

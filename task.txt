@@ -21,7 +21,7 @@ Ciekawy feater może być że nawet jak się poda złe słowo to i tak trzeba wp
 
 NAZWA=mnemo od greckiego mnēmē czyli pamięć plus tam nemo jest, jak ta rybka
 
-[]niech na końcu jak nie wyświetla logóów po dordze to niech na końcu da statystyki końcowe
-[]pasuje dać opis tych statysstyk żeby były czytelniejsze
-[]niech w man będzie informacja o tym że format .txt z formą "strona=druga strona" też jest dopuszczalny, on se go odczta i zapisze tak jak powinien
+[OK]	niech na końcu jak nie wyświetla logóów po dordze to niech na końcu da statystyki końcowe
+[OK]	pasuje dać opis tych statysstyk żeby były czytelniejsze
+[OK]	niech w man będzie informacja o tym że format .txt z formą "strona=druga strona" też jest dopuszczalny, on se go odczta i zapisze tak jak powinien
 []koniecznie dodać tryb opisowy, gdzie nie trzeba podawać opdowiedzi, po prostu wyświeta się pytanie, mówisz se odpoweidź i potem po enterze daje się opowiedź i sam decydujesz czy ok czy nie np klawiszami q/p ważne tu też aby się dalo cofać no i tutaj tylko format .CSV byłby dopuszczalny

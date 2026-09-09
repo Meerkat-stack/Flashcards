@@ -61,25 +61,33 @@ void read_flags(int argc, char** argv, char** source_file,char** output_file,int
 
 void print_help_message(const char *program_name) {
     printf(
-        "Usage: %s <source_file.csv> [OPTIONS]\n\n"
+        "Usage: %s <source_file> [OPTIONS]\n\n"
         "A simple flashcard console application with status tracking.\n\n"
         "Type '/quit' at any time during practice to exit the session.\n\n"
-        "File format:\n"
-        "  CSV format with 3 columns (3rd column is optional status: 0=unlearned, 1=learned):\n"
-        "  \"front side\",\"back side\",\"[status]\"\n\n"
+        "File formats supported:\n"
+        "  CSV format (3 columns, 3rd column optional status: 0=unlearned, 1=learned):\n"
+        "      \"front side\",\"back side\",\"[status]\"\n"
+        "  TXT format (simple equation delimiter):\n"
+        "      front side=back side\n\n"
         "Selection modes (choose one, default: -i):\n"
         "  -a              Practice all flashcards\n"
         "  -i              Practice only unlearned/new flashcards (status 0)\n"
         "  -k              Practice only known/learned flashcards (status 1)\n\n"
         "Options:\n"
-        "  -o <file.csv>   Save progress to a specific output file\n"
-        "                  [WARNING: This file will be overwritten upon exit]\n"
+        "  -o <file>       Save progress to a specific output file\n"
+        "                  [WARNING: File overwritten upon exit]\n"
         "                  (default: uses words_YYYY-MM-DDThh-mm.csv)\n"
         "  -s              Sequential mode (do not shuffle flashcards)\n"
         "  -r              Reverse flashcards (e.g. PL -> ENG instead of ENG -> PL)\n"
         "  -n              Hide live timer (show total time spent only in summary)\n"
         "  -c              Colorless mode (turn off ANSI colored output)\n"
-        "  -h, --help      Display this help message and exit\n",
+        "  -h, --help      Display this help message and exit\n\n"
+        "Practice Log Format:\n"
+        "  Example: [3/60] (50%%) | T 00:02 | meerkat : \n"
+        "    [3/60]            - Progress counter (current card / total cards)\n"
+        "    (50%%)             - Live accuracy percentage\n"
+        "    T 00:02           - Elapsed session time (MM:SS or HH:MM:SS)\n"
+        "    meerkat :         - Prompt word (front side)\n",
         program_name
     );
 }
