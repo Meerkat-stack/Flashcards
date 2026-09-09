@@ -1,4 +1,2 @@
 task.txt
-bin/words_*
-bin/*.out
-bin/words.csv
+bin/
