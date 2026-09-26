@@ -18,20 +18,20 @@ A lightweight, feature-rich command-line flashcard application written in C for 
 
 ## Build & Installation
 
-Ensure you have `gcc` (or another C compiler) and `make` installed.
+Ensure you have `gcc` and `make` installed.
 
 ### Quick One-Liner Setup
 You can clone, prepare directories, and build the project with a single command:
 
 ```bash
-git clone https://github.com/Meerkat-stack/Flashcards-CLI.git && cd Flashcards-CLI && mkdir -p bin && cd src && make
+git clone https://github.com/Meerkat-stack/Flashcards.git && cd Flashcards && mkdir -p bin && cd src && make && cd ../bin
 ```
 
 ### Manual Build Instructions
 1. Clone the repository and navigate into the project root:
    ```bash
-   git clone https://github.com/Meerkat-stack/Flashcards-CLI.git
-   cd Flashcards-CLI
+   git clone https://github.com/Meerkat-stack/Flashcards.git
+   cd Flashcards
    ```
 2. Create the output directory for binaries (if not handled automatically by Makefile):
    ```bash
@@ -49,7 +49,7 @@ The compiled binary will be placed inside the `bin/` directory.
 ## Usage
 
 ```bash
-./flashcards <source_file> [OPTIONS]
+./mnemo <source_file> [OPTIONS]
 ```
 
 ### Options:
